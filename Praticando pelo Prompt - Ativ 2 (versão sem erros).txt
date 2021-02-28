@@ -1,0 +1,170 @@
+
+*********COMO FAZER UM BANCO DE DADOS E TABELAS NO PROMPT DE COMANDO DO COMPUTADOR*********
+-----------------------------------------------------------------------------------------------------------------------
+-- Entrar no prompt de comando/cmd
+-- win + r, digitar cmd, pressionar ok
+-----------------------------------------------------------------------------------------------------------------------
+-- Entrar no diretório bin do MySQL Server: arquivo mysql.exe
+-- cd C:\Program Files\MySQL\MySQL Server 8.0\bin
+-----------------------------------------------------------------------------------------------------------------------
+-- Entrar no MySQL Server com o usuário root
+-- mysql -u root -p
+-----------------------------------------------------------------------------------------------------------------------
+-- Digitar a senha do usuário root
+-----------------------------------------------------------------------------------------------------------------------
+-- Criar usuário e uma senha no MySQL Server via linha de comando
+CREATE USER 'consultor'@'localhost' IDENTIFIED BY 'urubu100';
+-----------------------------------------------------------------------------------------------------------------------
+-- Dar todas as permissões ao usuário criado
+GRANT ALL ON *.* TO 'consultor'@'localhost';
+-----------------------------------------------------------------------------------------------------------------------
+-- Dar permissão de apenas consulta
+GRANT SELECT, UPDATE ON *.* TO 'consultor'@'localhost';
+-----------------------------------------------------------------------------------------------------------------------
+-- Confirmar as permissões/privilégios
+flush privileges;
+-----------------------------------------------------------------------------------------------------------------------
+CRIANDO BANCO DE DADOS
+-----------------------------------------------------------------------------------------------------------------------
+create database nomeDoBD;
+use nomeDoBD;
+-----------------------------------------------------------------------------------------------------------------------
+CRIANDO TABELAS
+-----------------------------------------------------------------------------------------------------------------------
+create table empresa(idEmpresa int primary key auto_increment, nomeEmpresa varchar (50), responsavel varchar (40));
+-----------------------------------------------------------------------------------------------------------------------
+INSERÇÃO DE DADOS
+-----------------------------------------------------------------------------------------------------------------------
+insert into empresa (idEmpresa, nomeEmpresa, responsavel) values (null, 'Fleury', 'Júlia Budavicius');
+insert into empresa (idEmpresa, nomeEmpresa, responsavel) values (null, 'C6 Bank', 'Vitória Eleutério');
+insert into empresa (idEmpresa, nomeEmpresa, responsavel) values (null, 'Safra', 'Júlio Moudatsos');
+insert into empresa (idEmpresa, nomeEmpresa, responsavel) values (null, 'TIVIT', 'Amadeu do Nascimento');
+-----------------------------------------------------------------------------------------------------------------------
+*Exibir todos os dados da tabela
+-----------------------------------------------------------------------------------------------------------------------
+select * from empresa;
++-----------+-------------+----------------------+
+| idEmpresa | nomeEmpresa | responsavel          |
++-----------+-------------+----------------------+
+|         1 | Fleury      | Júlia Budavicius     |
+|         2 | C6 Bank     | Vitória Eleutério    |
+|         3 | Safra       | Júlio Moudatsos      |
+|         4 | TIVIT       | Amadeu do Nascimento |
++-----------+-------------+----------------------+
+-----------------------------------------------------------------------------------------------------------------------
+*Exibir apenas os nomes e os responsáveis das empresas
+-----------------------------------------------------------------------------------------------------------------------
+select nomeEmpresa, responsavel from empresa;
+
++-------------+----------------------+
+| nomeEmpresa | responsavel          |
++-------------+----------------------+
+| Fleury      | Júlia Budavicius     |
+| C6 Bank     | Vitória Eleutério    |
+| Safra       | Júlio Moudatsos      |
+| TIVIT       | Amadeu do Nascimento |
++-------------+----------------------+
+-----------------------------------------------------------------------------------------------------------------------
+*Exibir os dados da tabela ordenados pelo nome da Empresa.
+-----------------------------------------------------------------------------------------------------------------------
+select nomeEmpresa from empresa order by nomeEmpresa;
+
++-------------+
+| nomeEmpresa |
++-------------+
+| C6 Bank     |
+| Fleury      |
+| Safra       |
+| TIVIT       |
++-------------+
+------------------------------------------------------------------------------------------------------------------------
+*Exibir os dados da tabela, ordenados pelo nome do responsável, em ordem decrescente.
+------------------------------------------------------------------------------------------------------------------------
+select responsavel from empresa order by responsavel desc;
+
++----------------------+
+| responsavel          |
++----------------------+
+| Vitória Eleutério    |
+| Júlio Moudatsos      |
+| Júlia Budavicius     |
+| Amadeu do Nascimento |
++----------------------+
+
+--------------------------------------------------------------------------------------------------------------------------------
+*Exibir os dados da tabela, das empresas cujo nome contenha a letra r.
+--------------------------------------------------------------------------------------------------------------------------------
+select nomeEmpresa from empresa where nomeEmpresa like '%r%';
+
++-------------+
+| nomeEmpresa |
++-------------+
+| Fleury      |
+| Safra       |
++-------------+
+
+--------------------------------------------------------------------------------------------------------------------------------
+*Exibir os dados da tabela, das empresas cujo nome comece com uma determinada letra.
+--------------------------------------------------------------------------------------------------------------------------------
+select nomeEmpresa from empresa where nomeEmpresa like 'S%';
+
++-------------+
+| nomeEmpresa |
++-------------+
+| Safra       |
++-------------+
+
+--------------------------------------------------------------------------------------------------------------------------------
+*Exibir os dados da tabela, das empresas cujo nome da empresa tenha a penúltima letra r.
+--------------------------------------------------------------------------------------------------------------------------------
+select nomeEmpresa from empresa where nomeEmpresa like '%r_%';
+
++-------------+
+| nomeEmpresa |
++-------------+
+| Fleury      |
+| Safra       |
++-------------+
+
+-------------------------------------------------------------------------------------------------------------------------------
+*Atualize o responsável da Empresa TIVIT, responsavel ='Jacinto Pinto'. 
+-------------------------------------------------------------------------------------------------------------------------------
+Como era:
+
+select nomeEmpresa, responsavel from empresa;
+
++-------------+----------------------+
+| nomeEmpresa | responsavel          |
++-------------+----------------------+
+| Fleury      | Júlia Budavicius     |
+| C6 Bank     | Vitória Eleutério    |
+| Safra       | Júlio Moudatsos      |
+| TIVIT       | Amadeu do Nascimento |
++-------------+----------------------+
+
+Com a mudança:
+-------------------------------------------------------------------------------------------------------------------------------
+update empresa set responsavel = 'Jacinto Pinto' where responsavel = 'Amadeu do Nascimento'; 
+-------------------------------------------------------------------------------------------------------------------------------
+select nomeEmpresa, responsavel from empresa;
+
++-----------+-------------+-------------------+
+| idEmpresa | nomeEmpresa | responsavel       |
++-----------+-------------+-------------------+
+|         1 | Fleury      | Júlia Budavicius  |
+|         2 | C6 Bank     | Vitória Eleutério |
+|         3 | Safra       | Júlio Moudatsos   |
+|         4 | TIVIT       | Jacinto Pinto     |
++-----------+-------------+-------------------+
+
+
+
+
+
+
+
+
+
+
+
+

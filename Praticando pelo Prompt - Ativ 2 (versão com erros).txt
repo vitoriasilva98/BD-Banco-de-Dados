@@ -1,0 +1,257 @@
+Microsoft Windows [versão 10.0.19041.804]
+(c) 2020 Microsoft Corporation. Todos os direitos reservados.
+
+C:\Users\vitor>cd ..
+
+C:\Users>cd ..
+
+C:\>Arquivos de Programas\
+'Arquivos' não é reconhecido como um comando interno
+ou externo, um programa operável ou um arquivo em lotes.
+
+C:\>cd Arquivos de Programas\
+
+C:\Arquivos de Programas>cd MySQL
+
+C:\Arquivos de Programas\MySQL>cd MySQL Server 8.0
+
+C:\Arquivos de Programas\MySQL\MySQL Server 8.0>cd bin
+
+C:\Arquivos de Programas\MySQL\MySQL Server 8.0\bin>mysql -u root -p
+Enter password: **********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 19
+Server version: 8.0.23 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create user 'consultor'@'localhost' indentified by '******';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'indentified by '*******'' at line 1
+mysql> create user 'consultor'@'localhost' identified by '******';
+Query OK, 0 rows affected (0.69 sec)
+
+mysql> grant all *.* to 'consultor'@'localhost';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*.* to 'consultor'@'localhost'' at line 1
+mysql> create user 'consultor'@'localhost' identified by '******'create user 'consultor'@'localhost' identified by '******';cle^C
+mysql> clear
+mysql> clear
+mysql> clean
+    ->
+    -> ^C
+mysql> create user 'consultor'@'localhost' identified by '******';
+Query OK, 0 rows affected (0.15 sec)
+
+mysql> grant all on *.* to 'consultor'@'localhost';
+Query OK, 0 rows affected (0.23 sec)
+
+mysql> flush privileges;
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> create database empresa(idEmpresa int primary key auto_increment, nomeEmpresa varchar (50), responsavel varchar (40);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(idEmpresa int primary key auto_increment, nomeEmpresa varchar (50), responsavel' at line 1
+mysql> use Faculdade;
+Database changed
+mysql> create table empresa(idEmpresa int primary key auto_increment, nomeEmpresa varchar (50), responsavel varchar (400);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> create table empresa(idEmpresa int primary key auto_increment, nomeEmpresa varchar (50), responsavel varchar (40));
+Query OK, 0 rows affected (1.26 sec)
+
+mysql> insert into empresa (idEmpresa, nomeEmpresa, responsavel) values ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> insert into empresa(idEmpresa, nomeEmpresa, resposavel) values (null, 'Fleury', 'Júlia Budavicius');
+ERROR 1054 (42S22): Unknown column 'resposavel' in 'field list'
+mysql> insert into empresa (idEmpresa, nomeEmpresa, resposavel) values (null, 'Fleury', 'Júlia Budavicius');
+ERROR 1054 (42S22): Unknown column 'resposavel' in 'field list'
+mysql> insert into Empresa (idEmpresa, nomeEmpresa, resposavel) values (null, 'Fleury', 'Júlia Budavicius');
+ERROR 1054 (42S22): Unknown column 'resposavel' in 'field list'
+mysql>
+mysql> insert into empresa (idEmpresa, nomeEmpresa, responsavel) values (null, 'Fleury', 'Júlia Budavicius');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into empresa (idEmpresa, nomeEmpresa, responsavel) values (null, 'C6 Bank', 'Vitória Eleutério');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into empresa (idEmpresa, nomeEmpresa, responsavel) values (null, 'Safra', 'Júlio Moudatsos');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into empresa (idEmpresa, nomeEmpresa, responsavel) values (null, 'TIVIT', 'Amadeu do Nascimento');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from empresa;
++-----------+-------------+----------------------+
+| idEmpresa | nomeEmpresa | responsavel          |
++-----------+-------------+----------------------+
+|         1 | Fleury      | Júlia Budavicius     |
+|         2 | C6 Bank     | Vitória Eleutério    |
+|         3 | Safra       | Júlio Moudatsos      |
+|         4 | TIVIT       | Amadeu do Nascimento |
++-----------+-------------+----------------------+
+4 rows in set (0.07 sec)
+
+mysql> select nomeEmpresa, responsal from empresa;
+ERROR 1054 (42S22): Unknown column 'responsal' in 'field list'
+mysql> select nomeEmpresa, responsavel from empresa;
++-------------+----------------------+
+| nomeEmpresa | responsavel          |
++-------------+----------------------+
+| Fleury      | Júlia Budavicius     |
+| C6 Bank     | Vitória Eleutério    |
+| Safra       | Júlio Moudatsos      |
+| TIVIT       | Amadeu do Nascimento |
++-------------+----------------------+
+4 rows in set (0.00 sec)
+
+mysql> select nomeEmpresa order by nomeEmpresa from empresa;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from empresa' at line 1
+mysql> select empresa order by nomeEmpresa;
+ERROR 1054 (42S22): Unknown column 'empresa' in 'field list'
+mysql> select empresa order by nomeEmpresa;
+ERROR 1054 (42S22): Unknown column 'empresa' in 'field list'
+mysql> select nomeEmpresa order by nomeEmpresa where empresa;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where empresa' at line 1
+mysql> select nomeEmpresa order by nomeEmpresa from empresa;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from empresa' at line 1
+mysql> select nomeEmpresa from empresa order by nomeEmpresa;
++-------------+
+| nomeEmpresa |
++-------------+
+| C6 Bank     |
+| Fleury      |
+| Safra       |
+| TIVIT       |
++-------------+
+4 rows in set (0.07 sec)
+
+mysql> select responsavel from empresa order by responsavel desc;
++----------------------+
+| responsavel          |
++----------------------+
+| Vitória Eleutério    |
+| Júlio Moudatsos      |
+| Júlia Budavicius     |
+| Amadeu do Nascimento |
++----------------------+
+4 rows in set (0.00 sec)
+
+mysql> select nomeEmpresa from empresa order by '%r%';
++-------------+
+| nomeEmpresa |
++-------------+
+| Fleury      |
+| C6 Bank     |
+| Safra       |
+| TIVIT       |
++-------------+
+4 rows in set (0.74 sec)
+
+mysql> select nomeEmpresa from empresa order by '%R%';
++-------------+
+| nomeEmpresa |
++-------------+
+| Fleury      |
+| C6 Bank     |
+| Safra       |
+| TIVIT       |
++-------------+
+4 rows in set (0.00 sec)
+
+mysql> select nomeEmpresa from empresa order by '%S_%';
++-------------+
+| nomeEmpresa |
++-------------+
+| Fleury      |
+| C6 Bank     |
+| Safra       |
+| TIVIT       |
++-------------+
+4 rows in set (0.00 sec)
+
+mysql> select nomeEmpresa from empresa order by 'S_%';
++-------------+
+| nomeEmpresa |
++-------------+
+| Fleury      |
+| C6 Bank     |
+| Safra       |
+| TIVIT       |
++-------------+
+4 rows in set (0.00 sec)
+
+mysql> select nomeEmpresa from empresa where nomeEmpresa like '%r%';
++-------------+
+| nomeEmpresa |
++-------------+
+| Fleury      |
+| Safra       |
++-------------+
+2 rows in set (0.76 sec)
+
+mysql> ^C
+mysql> select nomeEmpresa from empresa where nomeEmpresa like 'S%';
++-------------+
+| nomeEmpresa |
++-------------+
+| Safra       |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select nomeEmpresa from empresa where nomeEmpresa like '%r_%';
++-------------+
+| nomeEmpresa |
++-------------+
+| Fleury      |
+| Safra       |
++-------------+
+2 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> select nomeEmpresa, responsavel from empresa where nomeEmpresa, responsavel like = "C6 Bank";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', responsavel like = "C6 Bank"' at line 1
+mysql> select nomeEmpresa, responsavel from empresa where nomeEmpresa like = "C6 Bank";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= "C6 Bank"' at line 1
+mysql>
+mysql> select nomeEmpresa, responsavel from empresa like = 'C6 Bank';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'like = 'C6 Bank'' at line 1
+mysql> select * from empresa where nomeEmpresa, responsavel;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', responsavel' at line 1
+mysql> select nomeEmpresa, responsavel from empresa;
++-------------+----------------------+
+| nomeEmpresa | responsavel          |
++-------------+----------------------+
+| Fleury      | Júlia Budavicius     |
+| C6 Bank     | Vitória Eleutério    |
+| Safra       | Júlio Moudatsos      |
+| TIVIT       | Amadeu do Nascimento |
++-------------+----------------------+
+4 rows in set (0.00 sec)
+
+mysql>
+mysql> update empresa set resposavel = 'Jacinto Pinto' where responsavel = 'Amadeu do Nascimento';
+ERROR 1054 (42S22): Unknown column 'resposavel' in 'field list'
+mysql> update empresa set resposavel = 'Jacinto Pinto' where idEmpresa = 4;
+ERROR 1054 (42S22): Unknown column 'resposavel' in 'field list'
+mysql> update empresa set responsavel = 'Jacinto Pinto' where responsavel = 'Amadeu do Nascimento';
+Query OK, 1 row affected (0.12 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from empresa;
++-----------+-------------+-------------------+
+| idEmpresa | nomeEmpresa | responsavel       |
++-----------+-------------+-------------------+
+|         1 | Fleury      | Júlia Budavicius  |
+|         2 | C6 Bank     | Vitória Eleutério |
+|         3 | Safra       | Júlio Moudatsos   |
+|         4 | TIVIT       | Jacinto Pinto     |
++-----------+-------------+-------------------+
+4 rows in set (0.11 sec)
+
+mysql> select nomeEmpresa, responsavel from empresa;^C
+mysql>
