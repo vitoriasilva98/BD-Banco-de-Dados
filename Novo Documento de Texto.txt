@@ -1,0 +1,198 @@
+create table Moto (idMoto int primary key auto_increment, nome varchar(50), placa varchar(7), cidade varchar(30));
+
+insert into Moto values (null, 'Suzuki GSX-R1000', 'PCS0S00', 'Diadema-SP');
+insert into Moto values (null, 'Honda CBR1000 RR', 'VIX2M56', 'Ouro Preto-MG');
+insert into Moto values (null, 'Yamaha YZF-R1', 'GTP5T78', 'São Paulo-SP');
+insert into Moto values (null, 'Kawasaki ZZR 1400 Ninja', 'EBP4W84', 'Gramado-RS');
+insert into Moto values (null, 'MV Agusta F4 1000S', 'MPO2B44', 'São Caetano do Sul-SP');
+insert into Moto values (null, 'Suzuki GSX-R1000', 'GTP8A03', 'São Caetano do Sul-SP');
+insert into Moto values (null, 'Honda CBR1000 RR', 'FGN3B34', 'Gramado-RS');
+insert into Moto values (null, 'Yamaha YZF-R1', 'DOG3S10', 'São Paulo-SP');
+insert into Moto values (null, 'Kawasaki ZZR 1400 Ninja', 'LOV3F08', 'Ouro Preto-MG');
+insert into Moto values (null, 'MV Agusta F4 1000S', 'JES0S96', 'Diadema-SP');
+
+-----------------------------------------------------------------------------------------
+(1) - select * from Moto;
+
++--------+-------------------------+---------+-----------------------+
+| idMoto | nome                    | placa   | cidade                |
++--------+-------------------------+---------+-----------------------+
+|      1 | Suzuki GSX-R1000        | PCS0S00 | Diadema-SP            |
+|      2 | Honda CBR1000 RR        | VIX2M56 | Ouro Preto-MG         |
+|      3 | Yamaha YZF-R1           | GTP5T78 | São Paulo-SP          |
+|      4 | Kawasaki ZZR 1400 Ninja | EBP4W84 | Gramado-RS            |
+|      5 | MV Agusta F4 1000S      | MPO2B44 | São Caetano do Sul-SP |
+|      6 | Suzuki GSX-R1000        | GTP8A03 | São Caetano do Sul-SP |
+|      7 | Honda CBR1000 RR        | FGN3B34 | Gramado-RS            |
+|      8 | Yamaha YZF-R1           | DOG3S10 | São Paulo-SP          |
+|      9 | Kawasaki ZZR 1400 Ninja | LOV3F08 | Ouro Preto-MG         |
+|     10 | MV Agusta F4 1000S      | JES0S96 | Diadema-SP            |
++--------+-------------------------+---------+-----------------------+
+--------------------------------------------------------------------------------------------
+(2) - select nome, cidade from Moto;
+
++-------------------------+-----------------------+
+| nome                    | cidade                |
++-------------------------+-----------------------+
+| Suzuki GSX-R1000        | Diadema-SP            |
+| Honda CBR1000 RR        | Ouro Preto-MG         |
+| Yamaha YZF-R1           | São Paulo-SP          |
+| Kawasaki ZZR 1400 Ninja | Gramado-RS            |
+| MV Agusta F4 1000S      | São Caetano do Sul-SP |
+| Suzuki GSX-R1000        | São Caetano do Sul-SP |
+| Honda CBR1000 RR        | Gramado-RS            |
+| Yamaha YZF-R1           | São Paulo-SP          |
+| Kawasaki ZZR 1400 Ninja | Ouro Preto-MG         |
+| MV Agusta F4 1000S      | Diadema-SP            |
++-------------------------+-----------------------+
+------------------------------------------------------------------------------------------------
+(3) - select * from Moto where cidade = 'Diadema-SP';
+
++--------+--------------------+---------+------------+
+| idMoto | nome               | placa   | cidade     |
++--------+--------------------+---------+------------+
+|      1 | Suzuki GSX-R1000   | PCS0S00 | Diadema-SP |
+|     10 | MV Agusta F4 1000S | JES0S96 | Diadema-SP |
++--------+--------------------+---------+------------+
+
+---------------------------------------------------------
+(4) - select * from Moto where placa like 'F%';
+
++--------+------------------+---------+------------+
+| idMoto | nome             | placa   | cidade     |
++--------+------------------+---------+------------+
+|      7 | Honda CBR1000 RR | FGN3B34 | Gramado-RS |
++--------+------------------+---------+------------+
+
+------------------------------------------------------------
+
+(5) - select * from Moto order by cidade;
+
++--------+-------------------------+---------+-----------------------+
+| idMoto | nome                    | placa   | cidade                |
++--------+-------------------------+---------+-----------------------+
+|      1 | Suzuki GSX-R1000        | PCS0S00 | Diadema-SP            |
+|     10 | MV Agusta F4 1000S      | JES0S96 | Diadema-SP            |
+|      4 | Kawasaki ZZR 1400 Ninja | EBP4W84 | Gramado-RS            |
+|      7 | Honda CBR1000 RR        | FGN3B34 | Gramado-RS            |
+|      2 | Honda CBR1000 RR        | VIX2M56 | Ouro Preto-MG         |
+|      9 | Kawasaki ZZR 1400 Ninja | LOV3F08 | Ouro Preto-MG         |
+|      5 | MV Agusta F4 1000S      | MPO2B44 | São Caetano do Sul-SP |
+|      6 | Suzuki GSX-R1000        | GTP8A03 | São Caetano do Sul-SP |
+|      3 | Yamaha YZF-R1           | GTP5T78 | São Paulo-SP          |
+|      8 | Yamaha YZF-R1           | DOG3S10 | São Paulo-SP          |
++--------+-------------------------+---------+-----------------------+
+
+----------------------------------------------------------------------------
+
+(6) - select * from Moto order by nome desc;
+
++--------+-------------------------+---------+-----------------------+
+| idMoto | nome                    | placa   | cidade                |
++--------+-------------------------+---------+-----------------------+
+|      3 | Yamaha YZF-R1           | GTP5T78 | São Paulo-SP          |
+|      8 | Yamaha YZF-R1           | DOG3S10 | São Paulo-SP          |
+|      1 | Suzuki GSX-R1000        | PCS0S00 | Diadema-SP            |
+|      6 | Suzuki GSX-R1000        | GTP8A03 | São Caetano do Sul-SP |
+|      5 | MV Agusta F4 1000S      | MPO2B44 | São Caetano do Sul-SP |
+|     10 | MV Agusta F4 1000S      | JES0S96 | Diadema-SP            |
+|      4 | Kawasaki ZZR 1400 Ninja | EBP4W84 | Gramado-RS            |
+|      9 | Kawasaki ZZR 1400 Ninja | LOV3F08 | Ouro Preto-MG         |
+|      2 | Honda CBR1000 RR        | VIX2M56 | Ouro Preto-MG         |
+|      7 | Honda CBR1000 RR        | FGN3B34 | Gramado-RS            |
++--------+-------------------------+---------+-----------------------+
+
+----------------------------------------------------------------------------
+
+(7) - select * from Moto where nome like '%_a';
+
++--------+-------------------------+---------+---------------+
+| idMoto | nome                    | placa   | cidade        |
++--------+-------------------------+---------+---------------+
+|      4 | Kawasaki ZZR 1400 Ninja | EBP4W84 | Gramado-RS    |
+|      9 | Kawasaki ZZR 1400 Ninja | LOV3F08 | Ouro Preto-MG |
++--------+-------------------------+---------+---------------+
+
+
+----------------------------------------------------------------------------
+
+(8) select * from Moto where cidade like 'S%';
+
++--------+--------------------+---------+-----------------------+
+| idMoto | nome               | placa   | cidade                |
++--------+--------------------+---------+-----------------------+
+|      3 | Yamaha YZF-R1      | GTP5T78 | São Paulo-SP          |
+|      5 | MV Agusta F4 1000S | MPO2B44 | São Caetano do Sul-SP |
+|      6 | Suzuki GSX-R1000   | GTP8A03 | São Caetano do Sul-SP |
+|      8 | Yamaha YZF-R1      | DOG3S10 | São Paulo-SP          |
++--------+--------------------+---------+-----------------------+
+
+----------------------------------------------------------------------------
+
+(9) - select * from Moto where placa like '_t%';
+
++--------+------------------+---------+-----------------------+
+| idMoto | nome             | placa   | cidade                |
++--------+------------------+---------+-----------------------+
+|      3 | Yamaha YZF-R1    | GTP5T78 | São Paulo-SP          |
+|      6 | Suzuki GSX-R1000 | GTP8A03 | São Caetano do Sul-SP |
++--------+------------------+---------+-----------------------+
+
+----------------------------------------------------------------------------
+
+(10) - select * from Moto where nome like '%s_%';
+
++--------+-------------------------+---------+-----------------------+
+| idMoto | nome                    | placa   | cidade                |
++--------+-------------------------+---------+-----------------------+
+|      1 | Suzuki GSX-R1000        | PCS0S00 | Diadema-SP            |
+|      4 | Kawasaki ZZR 1400 Ninja | EBP4W84 | Gramado-RS            |
+|      5 | MV Agusta F4 1000S      | MPO2B44 | São Caetano do Sul-SP |
+|      6 | Suzuki GSX-R1000        | GTP8A03 | São Caetano do Sul-SP |
+|      9 | Kawasaki ZZR 1400 Ninja | LOV3F08 | Ouro Preto-MG         |
+|     10 | MV Agusta F4 1000S      | JES0S96 | Diadema-SP            |
++--------+-------------------------+---------+-----------------------+
+
+------------------------------------------------------------------------------
+
+(11) - update Moto set placa = 'VAI3M00' where idMoto = 2;
+
+      select * from Moto;
+
++--------+-------------------------+---------+-----------------------+
+| idMoto | nome                    | placa   | cidade                |
++--------+-------------------------+---------+-----------------------+
+|      1 | Suzuki GSX-R1000        | PCS0S00 | Diadema-SP            |
+|      2 | Honda CBR1000 RR        | VAI3M00 | Ouro Preto-MG         |
+|      3 | Yamaha YZF-R1           | GTP5T78 | São Paulo-SP          |
+|      4 | Kawasaki ZZR 1400 Ninja | EBP4W84 | Gramado-RS            |
+|      5 | MV Agusta F4 1000S      | MPO2B44 | São Caetano do Sul-SP |
+|      6 | Suzuki GSX-R1000        | GTP8A03 | São Caetano do Sul-SP |
+|      7 | Honda CBR1000 RR        | FGN3B34 | Gramado-RS            |
+|      8 | Yamaha YZF-R1           | DOG3S10 | São Paulo-SP          |
+|      9 | Kawasaki ZZR 1400 Ninja | LOV3F08 | Ouro Preto-MG         |
+|     10 | MV Agusta F4 1000S      | JES0S96 | Diadema-SP            |
++--------+-------------------------+---------+-----------------------+
+
+---------------------------------------------------------------------------
+
+(12) - delete from Moto where idMoto = 3;
+
+        select * from Moto;
++--------+-------------------------+---------+-----------------------+
+| idMoto | nome                    | placa   | cidade                |
++--------+-------------------------+---------+-----------------------+
+|      1 | Suzuki GSX-R1000        | PCS0S00 | Diadema-SP            |
+|      2 | Honda CBR1000 RR        | VAI3M00 | Ouro Preto-MG         |
+|      4 | Kawasaki ZZR 1400 Ninja | EBP4W84 | Gramado-RS            |
+|      5 | MV Agusta F4 1000S      | MPO2B44 | São Caetano do Sul-SP |
+|      6 | Suzuki GSX-R1000        | GTP8A03 | São Caetano do Sul-SP |
+|      7 | Honda CBR1000 RR        | FGN3B34 | Gramado-RS            |
+|      8 | Yamaha YZF-R1           | DOG3S10 | São Paulo-SP          |
+|      9 | Kawasaki ZZR 1400 Ninja | LOV3F08 | Ouro Preto-MG         |
+|     10 | MV Agusta F4 1000S      | JES0S96 | Diadema-SP            |
++--------+-------------------------+---------+-----------------------+
+
+------------------------------------------------------------------------
+
+(13) - drop table Moto;
