@@ -1,0 +1,100 @@
+create database faculdade;
+
+use faculdade;
+
+select * from empresa;
+
+create table Revista(
+  idRevista int primary key auto_increment,
+  nome varchar (40),
+  categoria varchar (30)
+);
+
+insert into Revista values (null, 'Veja', 'Abrangência nacional e global');
+insert into Revista values (null, 'Isto é', 'Notícias');
+insert into Revista values (null, 'Época', 'Notícias');
+insert into Revista values (null, 'Quatro Rodas', 'Automóvel');
+insert into Revista values (null, 'Vogue', 'Moda');
+
+-- Exibir todos os dados da tabela
+select * from Revista;
+
+-- Atualize os dados das categorias das 3 revistas
+update Revista set categoria = 'Abrangência nacional e global' where idRevista in (2, 3);
+update Revista set categoria = 'Nóticia' where idRevista = 1;
+
+-- Inserir mais 3 registros a tabela
+insert into Revista values (null, 'Capricho', 'Conteúdo Jovial');
+insert into Revista values (null, 'Elle', 'Moda');
+insert into Revista values (null, 'Claudia', 'Moda');
+
+-- Exibir todos os dados da tabela
+select * from Revista;
+
+-- Exibir a descrição estrututa 
+desc Revista;
+
+-- Alterar a tabela para que a coluna categoria possa ter no máximo 40 carateres
+alter table Revista modify categoria  varchar(40);
+
+-- Exibir a descrição estrututa 
+desc Revista;
+
+-- Acrescentar a coluna periodicamente à tabela, que é varchar(15)
+alter table Revista add column periodicamente varchar (15);
+
+-- Exibir todos os dados da tabela
+select * from Revista;
+
+-- Excluir a conta periodicidade da tabela
+alter table Revista drop periodicamente;
+
+-- Criando a tabela Editora
+create table Editora(
+  idEditora int primary key auto_increment,
+  nomeEditora varchar (40),
+  dataFund date) auto_increment = 1000;
+  
+-- Inserção de dados
+  insert into Editora values (null, 'Globo Livros', '1989-03-18');
+  insert into Editora values (null, 'Editora Sextante', '1998-03-18');
+  insert into Editora values (null, 'Somos Educação', '1960-05-02');
+  insert into Editora values (null, 'Editora Rocco', '1975-10-30');
+
+-- Acrescentar a coluna fkEditora na tabela Revista, com o tipo int (1º)
+  alter table Revista add column fkEditora int;
+-- de forma que essa coluna seja uma chave estrangeira que referencia a chave a tabela editora. (2º)
+  alter table Revista add foreign key (fkEditora) references Editora (idEditora);
+
+-- Exibir todos os dados da tabela Revista
+  select * from Revista;
+  select * from Editora;
+  
+  -- Coligando a coluna kfEditora na tabela Revista 
+  update Revista set fkEditora = 1002 where idRevista in ('1', '2', '3');
+  update Revista set fkEditora = 1000 where idRevista = ('4');
+  update Revista set fkEditora = 1001 where idRevista in ('5', '7');
+  update Revista set fkEditora = 1003 where idRevista = ('6');
+  
+
+  
+  -- exibir todos os campos da tabela revista e editora
+  select * from revista, editora where idEditora = fkEditora;
+  -- Join
+  select * from Revista inner join Editora on fkEditora = idEditora;
+  
+  -- Left Join
+  select * from Revista left join Editora on fkEditora = idEditora;  
+  
+  -- Right Join
+  select * from Revista right join Editora on fkEditora = idEditora;
+  
+  -- exibir os dadosdas revistas e das editoras, porém apenas de uma editora
+  select * from Revista inner join Editora on fkEditora = idEditora;
+  
+  select * from Revista inner join Editora on fkEditora = idEditora where nomeEditora = 'Somos Educação';
+  
+
+  
+  
+
